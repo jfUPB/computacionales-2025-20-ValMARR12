@@ -22,7 +22,7 @@ M=D
 
 lo que hace el codigo es que suma dos numeros indicados por el @ y en A se muestra el registo actual en D se muestra el resultado del registro osea la suma, despues se pone en un @ la linea en la ram que se deesa guardar y despues del arroba de M=D para que la computadora lo guarde en la ram, al final sencilla mente se pone el END para y el JMP para que la computadora no siga 
 
-ejemplo impuesto en la clase
+ejemplo hecho en la clase
 
 ``` asm
 @5
