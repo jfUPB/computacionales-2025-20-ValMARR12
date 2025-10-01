@@ -103,7 +103,7 @@ Cohesión
 Alta: La lógica de cada movimiento está aislada en su propia clase de estado (ej. AttractState).
 Baja: Toda la lógica de movimiento está mezclada en un único método (Particle::update).
 
-Extensibilidad (OCP)	
+Extensibilidad 	
 Respeta OCP: Para añadir un nuevo comportamiento (FastState), solo se crea una nueva clase de estado. No se modifica Particle::update().	
 Viola OCP: Hay que modificar el switch dentro de Particle::update() cada vez que se añade un estado, introduciendo riesgo.
 
@@ -463,7 +463,7 @@ void ofApp::keyPressed(int key) {
 
 ### Explica cómo usaste el patrón Factory para esta nueva partícula.
 
-Utilicé el Simple Factory (ParticleFactory) modificando el método estático createParticle. Añadí un nuevo bloque else if para manejar la clave "comet".
+Utilicé el ParticleFactory modificando el método estático createParticle. Añadí un nuevo bloque else if para manejar la clave "comet".
 
 Responsabilidad de la Factory: La Factory se encarga de crear la partícula y aplicar su configuración única: color cian (ofColor(0, 255, 255)), tamaño pequeño, alta velocidad inicial y, crucialmente, establecer su estado inicial a new FastState().
 
@@ -471,11 +471,11 @@ Ventaja: ofApp::setup solo necesita llamar a ParticleFactory::createParticle("co
 
 ### Describe cómo implementaste el patrón Observer para esta nueva partícula.
 
-El patrón Observer se utilizó para permitir que el ofApp (Sujeto) comunique el cambio de estado a todas las Particle (Observadores) cuando el usuario pulsa la nueva tecla.
+El patrón Observer se utilizó para permitir que el ofApp comunique el cambio de estado a todas las Particle cuando el usuario pulsa la nueva tecla.
 
-Sujeto (ofApp): Se añadió el caso 'f' en ofApp::keyPressed para emitir la notificación global: notify("fast");.
+ofApp: Se añadió el caso 'f' en ofApp::keyPressed para emitir la notificación global: notif
 
-Observador (Particle): Se modificó el método Particle::onNotify (el manejador del Observer) para reaccionar a la cadena "fast"
+Particle: Se modificó el método Particle::onNotify (el manejador del Observer) para reaccionar a la cadena "fast"
 
 ### Explica cómo aplicaste el patrón State a esta nueva partícula.
 
@@ -486,3 +486,19 @@ Comportamiento Encapsulado: El método FastState::update define el movimiento r�
 Transición de Entrada (onEnter): El método FastState::onEnter se utiliza para inicializar una velocidad muy alta (velocity *= 5.0f) cuando la partícula entra en este estado. Esto garantiza una aceleración brusca desde cualquier estado anterior (incluso desde StopState).
 
 Delegación: Particle::update() delega su lógica de movimiento a FastState::update() cuando está activo, siguiendo el principio del patrón State.
+
+# Evaluacion
+
+### 1. Profundidad de la Indagación: 4.0
+Las preguntas se responden con síntesis conceptual clara, especialmente en la Actividad 04 (State) y 05 (aplicación). Se explican las interdependencias entre patrones.
+
+### 2. Calidad de la Experimentación: 3.9	
+Se realizo la experimentacion en a base (Act. 01) y la implementación y modificación (Act. 05) de forma efectiva y correcta, sin embargo, no logre agregar los diagramas.
+
+### 3. Análisis y Reflexión: 3.5 
+La reflexión es superficial en cuanto a la evidencia visual. Se conecta la evidencia a la explicación teórica, y se describen correctamente las ventajas de desacoplamiento (Act. 02 y 03) y extensibilidad (Act. 04). La falta de los diagramas de secuencia y estados resta peso a la profundidad del análisis estructural.
+
+### 4. Apropiación y Articulación de Conceptos: 4.5
+con este trabajo he tenido una comprensión clara y correcta de cada patrón. Los conceptos se explican con terminología adecuada (acoplamiento, SRP, OCP, polimorfismo, delegación). Se articula un sistema interdependiente al aplicar los tres patrones juntos en la Actividad 05.
+
+## Nota Calculada: 4.0
